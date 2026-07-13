@@ -1,121 +1,60 @@
 <!DOCTYPE html>
-<html lang="om">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Caalaa Campaign - Sagantaa, Odeeffannoo fi Hirmaannaa Hawaasaa"
-    />
-    <meta name="theme-color" content="#2c3e50" />
-    <title>Caalaa Campaign | ಸಗಾಂತಾ, ಓದೆಫಾಂನೂ ಫಿ ಹಿರ್ಮಾಂನೂ ಹಾವಾಸಾ</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇪🇹</text></svg>"
-    />
-  </head>
-  <body>
-    <nav class="navbar">
-      <div class="container">
-        <div class="logo">Caalaa Campaign</div>
-        <ul class="nav-links">
-          <li><a href="#about">Waa'ee Keenya</a></li>
-          <li><a href="#services">Tajaajila</a></li>
-          <li><a href="#contact">Nu Qunnamaa</a></li>
-        </ul>
-      </div>
-    </nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Web Client Test</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #f4f4f9; padding: 2rem; color: #333; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 500px; margin: 0 auto; }
+        .status { padding: 0.75rem; border-radius: 4px; font-weight: bold; margin-top: 1rem; }
+        .success { background: #e6f4ea; color: #137333; }
+        .error { background: #fce8e6; color: #c5221f; }
+    </style>
+</head>
+<body>
 
-    <header class="hero">
-      <div class="container">
-        <h1>Caalaa Campaign</h1>
-        <p class="tagline">Sagantaa, Odeeffannoo fi Hirmaannaa Hawaasaa</p>
-        <button class="cta-button" onclick="location.href='#contact'">Nu Qunnamaa</button>
-      </div>
-    </header>
+    <div class="card">
+        <h2>Caalaa Campaign Client</h2>
+        <p>Checking live Firebase configuration connection status...</p>
+        <div id="connection-status" class="status">Connecting...</div>
+    </div>
 
-    <section id="about" class="about">
-      <div class="container">
-        <h2>Waa'ee Keenya</h2>
-        <p>
-          Caalaa Campaign hawaasaaf odeeffannoo sirrii dhiyeessuu, namoota wal
-          qunnamsiisuu fi hojii gaarii deeggaruuf kan hundeeffame dha.
-        </p>
-        <p>
-          Miidiyaa hawaasaa keessatti hojii keenya hordofaa, odeeffannoo yeroo isaa
-          eggate argadhaa, fi hojii keenya keessatti hirmaadhuuf karaa barbaachisaa
-          ti.
-        </p>
-      </div>
-    </section>
+    <!-- Script must use type="module" for CDN ES6 imports to work -->
+    <script type="module">
+        // 1. Import the specific modules you need from the Firebase v10+ Web SDK CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-    <section id="services" class="services">
-      <div class="container">
-        <h2>Tajaajila</h2>
-        <div class="services-grid">
-          <div class="card">
-            <div class="card-icon">📢</div>
-            <h3>Odeeffannoo</h3>
-            <p>
-              Odeeffannoo yeroo isaa eeggate ni maxxansina. Haala hawaasaa fi
-              odeeffannoo barbaachisaa hunda argadhaa.
-            </p>
-          </div>
+        // 2. Transformed configuration from your Plist file strings
+        const firebaseConfig = {
+            apiKey: "AIzaSyBQNklM5Te0sqVjggFO40Qa2HL8dSo-OHk",
+            authDomain: "caalaa-campaign.firebaseapp.com",
+            projectId: "caalaa-campaign",
+            storageBucket: "caalaa-campaign.firebasestorage.app",
+            messagingSenderId: "351994411691",
+            
+            // NOTE: Swap this with your generated Web Client App ID from the Firebase console
+            appId: "1:351994411691:web:your-web-app-id-here" 
+        };
 
-          <div class="card">
-            <div class="card-icon">🤝</div>
-            <h3>Hirmaannaa</h3>
-            <p>
-              Hojii hawaasaa keessatti akka hirmaattan ni qopheessina. Midhaa gumii
-              keenya keessatti hirmaadhu.
-            </p>
-          </div>
+        const statusEl = document.getElementById('connection-status');
 
-          <div class="card">
-            <div class="card-icon">📞</div>
-            <h3>Qunnamtii</h3>
-            <p>
-              WhatsApp, Telegram fi emailiin nu qunnamuu dandeessu. Gaaffii kee
-              buusuuf waan biraa fudhadhu.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>Nu Qunnamaa</h2>
-        <p>
-          Qunnaantiin rakkoo keessatti jiraachuu danda'u yoo jiraate, waan biraa
-          fudhadhu:
-        </p>
-
-        <div class="contact-links">
-          <a href="https://wa.me/251983156394" class="contact-btn whatsapp" target="_blank">
-            📱 WhatsApp
-          </a>
-          <a href="https://t.me/chalamohammed3" class="contact-btn telegram" target="_blank">
-            ✈️ Telegram
-          </a>
-        </div>
-
-        <div class="contact-info">
-          <p><strong>Lakkoobsa Herregaa:</strong> +251 983 156 394</p>
-          <p><strong>Telegram:</strong> @chalamohammed3</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="container">
-        <p>&copy; 2026 Caalaa Campaign. Mirgi Hundi Seeraan Kan Eegame.</p>
-        <p>Developed with ❤️ for community empowerment</p>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+        try {
+            // 3. Initialize the app context
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+            
+            // If execution gets here without throwing, initialization worked!
+            statusEl.textContent = "✓ Firebase successfully initialized!";
+            statusEl.className = "status success";
+            console.log("Firebase App Instance initialized:", app);
+        } catch (error) {
+            statusEl.textContent = `✕ Initialization Failed: ${error.message}`;
+            statusEl.className = "status error";
+            console.error("Initialization error context:", error);
+        }
+    </script>
+</body>
 </html>
+
